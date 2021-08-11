@@ -31,14 +31,14 @@ summaryTilesComponent.init = () => {
 	const appendix = dom.newTag("dl", {
 		class : "summary-tile-appendix"
 	});
-	console.log(data);
+
 	[
 		createTile("Requests", data.requestsOnly.length||"0"),
 		createTile("Domains", data.requestsByDomain.length||"0"),
 		createTile(dom.combineNodes("Subdomains of ", dom.newTag("abbr", {title : "Top Level Domain", text : "TLD"})), data.hostSubdomains||"0"),
 		createTile(dom.combineNodes("Requests to ", dom.newTag("span", {title : location.host, text : "Host"})), data.hostRequests||"0"),
 		createTile(dom.combineNodes(dom.newTag("abbr", {title : "Top Level Domain", text : "TLD"}), " & Subdomain Requests"), data.currAndSubdomainRequests||"0"),
-		createTile("Total", (data.slowestCalls[0].duration + data.perfTiming.domContentLoadedEventStart - data.perfTiming.domLoading) + "ms", 40),
+		createTile("Total2", data.perfTiming.loadEventEnd - data.perfTiming.navigationStart + "ms", 40),
 		createTile("Time to First Byte", data.perfTiming.responseStart - data.perfTiming.navigationStart + "ms", 40),
 		createTile(dom.newTag("span", {title : "domLoading to domContentLoadedEventStart", text : "DOM Content Loading"}), data.perfTiming.domContentLoadedEventStart - data.perfTiming.domLoading + "ms", 40),
 		createTile(dom.newTag("span", {title : "domLoading to loadEventStart", text : "DOM Processing"}), data.perfTiming.domComplete - data.perfTiming.domLoading + "ms", 40)
