@@ -50,6 +50,7 @@ summaryTilesComponent.init = function () {
     "class": "summary-tile-appendix"
   });
 
+  console.log(_data["default"]);
   [createTile("Requests", _data["default"].requestsOnly.length || "0"), createTile("Domains", _data["default"].requestsByDomain.length || "0"), createTile(_dom["default"].combineNodes("Subdomains of ", _dom["default"].newTag("abbr", {
     title: "Top Level Domain",
     text: "TLD"
@@ -59,7 +60,7 @@ summaryTilesComponent.init = function () {
   })), _data["default"].hostRequests || "0"), createTile(_dom["default"].combineNodes(_dom["default"].newTag("abbr", {
     title: "Top Level Domain",
     text: "TLD"
-  }), " & Subdomain Requests"), _data["default"].currAndSubdomainRequests || "0"), createTile("Total2", _data["default"].perfTiming.loadEventEnd - _data["default"].perfTiming.navigationStart + "ms", 40), createTile("Time to First Byte", _data["default"].perfTiming.responseStart - _data["default"].perfTiming.navigationStart + "ms", 40), createTile(_dom["default"].newTag("span", {
+  }), " & Subdomain Requests"), _data["default"].currAndSubdomainRequests || "0"), createTile("Total", _data["default"].slowestCalls[0].duration + _data["default"].perfTiming.domContentLoadedEventStart - _data["default"].perfTiming.domLoading + "ms", 40), createTile("Time to First Byte", _data["default"].perfTiming.responseStart - _data["default"].perfTiming.navigationStart + "ms", 40), createTile(_dom["default"].newTag("span", {
     title: "domLoading to domContentLoadedEventStart",
     text: "DOM Content Loading"
   }), _data["default"].perfTiming.domContentLoadedEventStart - _data["default"].perfTiming.domLoading + "ms", 40), createTile(_dom["default"].newTag("span", {
